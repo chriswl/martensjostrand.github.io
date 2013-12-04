@@ -1,9 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/main.css" type="text/css" />
+    <script type="text/javascript" src="script/jquery.min.js"></script>
+    <script type="text/javascript" src="script/jquery.timer.js"></script>
+    <script type="text/javascript" src="script/sha1.js"></script>
+    <script type="text/javascript" src="script/seedrandom-min.js"></script>
     <title>Var &auml;ter vi lunch idag?</title>
+    <script type="text/javascript">                                         
+             var restaurants = ["Kebaben", "Bistro Bestick", "Meat", 
+                   "Giffins Steakhouse", "Gute Grill &amp; Bar", "Teatergrillen", "Max"];
+         
+             var getTimestamp = function(offset) {
+                date = new Date()
+                if(offset != null) {
+                    date.setDate(date.getDate() + offset)
+                }
+                return date.getFullYear() + "-" + (date.getMonth() +1) + "-" + date.getDate()
+             }
+         
+             var getRestaurant = function(timestamp) {
+                sha1 = calcSHA1(timestamp)
+                Math.seedrandom(sha1)
+                index = Math.floor(Math.random()*restaurants.length)
+                return restaurants[index] 
+             }
+         
+             var buildMessage = function() {                                                               
+                today = getTimestamp()
+                return getRestaurant(today); 
+             }
+         
+             var updateText = function() {
+                $('#restaurant').html(buildMessage())
+             }
+         
+             $(document).ready(function() {
+                updateText()
+                $.timer(10000, function (timer) {
+                      updateText();
+                })
+             })
+        </script>     
   </head>
   <body>
-    <p>Idag blir det lunch p&aring; <span>En restaurang</span></p>
+    <div class="content">
+      <p>Idag blir det lunch p&aring; <span id="restaurant">En restaurang</span>!</p>
+    </div>
   </body>
 </html>

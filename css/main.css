@@ -1,0 +1,10 @@
+.content {
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  font-size: 2em;
+  color: #AAA;
+  text-align: center
+}
+
+#restaurant {
+  color: #333;
+}
