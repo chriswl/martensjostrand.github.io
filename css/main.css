@@ -1,8 +1,16 @@
-.content {
+html {
+	font-size: 2em;	
+}
+
+.main {
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-  font-size: 2em;
   color: #AAA;
-  text-align: center
+  text-align: center;
+  padding: 2em;
+}
+
+.social {
+	text-align: center;
 }
 
 #restaurant {
