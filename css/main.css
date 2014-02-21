@@ -9,8 +9,10 @@ html {
   padding: 2em;
 }
 
+
 .social {
 	text-align: center;
+	font-size: 0em;
 }
 
 #restaurant {
